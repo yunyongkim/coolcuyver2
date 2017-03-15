@@ -16,7 +16,7 @@ public class CarDto {
 	private String regDate;
 	
 	public CarDto() {}
-
+	
 	public CarDto(String carNumber, String spotName, String chargeNumber,
 			String carName, String type, String brand, int seat,
 			String options, String oilType, int yearModel, int kilometer,

@@ -14,12 +14,17 @@ public class MemberDto {
 	private	String regDate;
 	private int point;
 	private int rentCnt;
-	private LicenseDto licenseDto;
+	private String licenseNumber;
+	private String licenseType;
+	private String issuDate;
+	private String expiryDate;
+	private String gender;
 	
 	public MemberDto() {}
-	
+
 	public MemberDto(String email, String phoneNumber, String name, String password, String rating, String zipCode,
-			String roadAddr, String detailAddr, String primaryArea, String regDate, int rentCnt, int point, LicenseDto licenseDto) {
+			String roadAddr, String detailAddr, String primaryArea, String regDate, int point, int rentCnt,
+			String licenseNumber, String licenseType, String issuDate, String expiryDate, String gender) {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.name = name;
@@ -30,38 +35,13 @@ public class MemberDto {
 		this.detailAddr = detailAddr;
 		this.primaryArea = primaryArea;
 		this.regDate = regDate;
-		this.rentCnt = rentCnt;
 		this.point = point;
-		this.licenseDto = licenseDto;
-	}
-	
-	public MemberDto(String email, String phoneNumber, String name, String password, String zipCode, String roadAddr,
-			String detailAddr, String primaryArea, int rentCnt, int point, LicenseDto licenseDto) {
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.name = name;
-		this.password = password;
-		this.zipCode = zipCode;
-		this.roadAddr = roadAddr;
-		this.detailAddr = detailAddr;
-		this.primaryArea = primaryArea;
 		this.rentCnt = rentCnt;
-		this.point = point;
-		this.licenseDto = licenseDto;
-		this.rating = "1";
-	}
-	
-	public MemberDto(String email, String phoneNumber, String name, String password, String zipCode, String roadAddr,
-			String detailAddr, String primaryArea, LicenseDto licenseDto) {
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.name = name;
-		this.password = password;
-		this.zipCode = zipCode;
-		this.roadAddr = roadAddr;
-		this.detailAddr = detailAddr;
-		this.primaryArea = primaryArea;
-		this.licenseDto = licenseDto;
+		this.licenseNumber = licenseNumber;
+		this.licenseType = licenseType;
+		this.issuDate = issuDate;
+		this.expiryDate = expiryDate;
+		this.gender = gender;
 	}
 
 	public String getEmail() {
@@ -143,7 +123,7 @@ public class MemberDto {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	
+
 	public int getPoint() {
 		return point;
 	}
@@ -151,7 +131,7 @@ public class MemberDto {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	
+
 	public int getRentCnt() {
 		return rentCnt;
 	}
@@ -160,20 +140,53 @@ public class MemberDto {
 		this.rentCnt = rentCnt;
 	}
 
-	public LicenseDto getLicenseDto() {
-		return licenseDto;
+	public String getLicenseNumber() {
+		return licenseNumber;
 	}
 
-	public void setLicenseDto(LicenseDto licenseDto) {
-		this.licenseDto = licenseDto;
+	public void setLicenseNumber(String licenseNumber) {
+		this.licenseNumber = licenseNumber;
+	}
+
+	public String getLicenseType() {
+		return licenseType;
+	}
+
+	public void setLicenseType(String licenseType) {
+		this.licenseType = licenseType;
+	}
+
+	public String getIssuDate() {
+		return issuDate;
+	}
+
+	public void setIssuDate(String issuDate) {
+		this.issuDate = issuDate;
+	}
+
+	public String getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(String expiryDate) {
+		this.expiryDate = expiryDate;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	@Override
 	public String toString() {
 		return "MemberDto [email=" + email + ", phoneNumber=" + phoneNumber + ", name=" + name + ", password="
 				+ password + ", rating=" + rating + ", zipCode=" + zipCode + ", roadAddr=" + roadAddr + ", detailAddr="
-				+ detailAddr + ", primaryArea=" + primaryArea + ", regDate=" + regDate + ", " + licenseDto.toString() + "]";
+				+ detailAddr + ", primaryArea=" + primaryArea + ", regDate=" + regDate + ", point=" + point
+				+ ", rentCnt=" + rentCnt + ", licenseNumber=" + licenseNumber + ", licenseType=" + licenseType
+				+ ", issuDate=" + issuDate + ", expiryDate=" + expiryDate + ", gender=" + gender + "]";
 	}
-	
 
 }
