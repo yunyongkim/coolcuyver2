@@ -3,7 +3,6 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-
 <html>
 <head>
 <title>Untitled Document</title>
@@ -14,8 +13,7 @@
 <body>
   <div id="wrap">
 	<jsp:include page="include/top.jsp" /> 
-	<section id="row1">
-	</section>
+	<section id="row1"></section>
 	
 	<section id="row2">
 	    <div class="circle" id="circle1">
@@ -62,5 +60,4 @@
 		<jsp:include page="include/footer.jsp" />
 	</div>
 </body>
-
 </html>

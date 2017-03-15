@@ -24,14 +24,6 @@ public class MemberController {
 	public String join(MemberDto member, CardDto card, LicenseDto licence){
 		logger.info(">>>>>>>>>> join <<<<<<<<<<");
 		
-		member.setLicenseDto(licence);
-		
-		System.out.println(member);
-		System.out.println(card);
-		System.out.println(licence);
-		
-		
-		
 		return "redirect:/member/joinSuccess";
 	}
 	

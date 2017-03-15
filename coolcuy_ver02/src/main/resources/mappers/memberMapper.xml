@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.chversion.mappers.MemberMapper">
+	<insert id="add">
+		INSERT INTO MEMBER VALUES(#{email},#{phoneNumber},#{name},#{password},
+		#{rating},#{zipCode},#{roadAddr},#{detailAddr},#{primaryArea},#{licenseNumber},
+		#{licenseType},#{gender},TO_DATE(#{issuDate}, 'YYYY-MM-DD'),
+		TO_DATE(#{ExpiryDate}, 'YYYY-MM-DD'),SYSDATE,#{point},#{rentCnt})
+	</insert>
+	
+	<select id="get" resultType="MemberDto">
+		SELECT EMAIL, PHONENUMBER, NAME, PASSWORD, RATING, ZIPCODE, GENDER
+			ROADADDR, DETAILADDR, PRIMARYAREA, LICENSENUMBER, LICENSETYPE,
+			GENDER, TO_CHAR(ISSUDATE, 'YYYY-MM-DD') AS ISSUDATE,
+			TO_CHAR(EXPIRYDATE, 'YYYY-MM-DD') AS EXPIRYDATE,
+			TO_CHAR(REGDATE, 'YYYY-MM-DD') AS REGDATE ,
+			POINT, RENTCNT
+			FROM MEMBER
+			WHERE EMAIL=#{email}
+			ORDER BY EMAIL ASC
+	</select>
+	
+	<select id="getAll" resultType="MemberDto">
+		SELECT EMAIL, PHONENUMBER, NAME, 
+			PASSWORD, RATING, TRIM(ZIPCODE) AS ZIPCODE, ROADADDR, 
+			DETAILADDR, PRIMARYAREA, LICENSENUMBER, LICENSETYPE, GENDER, 
+			TO_CHAR(ISSUDATE, 'YYYY-MM-DD') AS ISSUDATE, 
+			TO_CHAR(EXPIRYDATE, 'YYYY-MM-DD') AS EXPIRYDATE, 
+			TO_CHAR(REGDATE, 'YYYY-MM-DD HH24:MI:SS') AS REGDATE, 
+			POINT, RENTCNT FROM MEMBER ORDER BY EMAIL ASC
+	</select>
+	
+	<update id="update">
+		UPDATE MEMBER SET PHONENUMBER=#{phoneNumber}, NAME=#{name}, 
+			PASSWORD=#{password}, ZIPCODE=#{zipCode},
+			ROADADDR=#{roadAddr}, DETAILADDR=#{detailAddr}, PRIMARYAREA=#{primaryArea}, 
+			LICENSENUMBER=#{licenseNumber}, LICENSETYPE=#{licenseType}, 
+			GENDER=#{gender}, ISSUDATE=TO_DATE(#{issuDate}, 'YYYY-MM-DD'), 
+			EXPIRYDATE=TO_DATE(#{expiryDate}, 'YYYY-MM-DD') 
+			WHERE EMAIL=#{email}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM MEMBER WHERE EMAIL=#{email}
+	</delete>
+
+	<delete id="deleteAll">
+		DELETE MEMBER
+	</delete>
+	
+	<select id="validateLogin" resultType="int">
+		SELECT COUNT(#{EMAIL}) AS COUNT FROM MEMBER 
+			WHERE EMAIL=#{EMAIL} AND PASSWORD=#{PASSWORD}
+	</select>
+	
+	<select id="duplicateEmail" resultType="String">
+		SELECT COUNT(#{EMAIL}) AS COUNT FROM MEMBER 
+			WHERE EMAIL=#{EMAIL}
+	</select>
+	
+	<select id="getRating" resultType="int">
+		SELECT RATING FROM MEMBER WHERE EMAIL=#{email}
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT COUNT(EMAIL) FROM MEMBER
+	</select>	
+</mapper>
